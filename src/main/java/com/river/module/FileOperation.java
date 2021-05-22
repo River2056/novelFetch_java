@@ -9,11 +9,11 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 public class FileOperation {
-    public static void outputFileFromUU(File outputDirectory, String episodeTitle, String chapterTitle, String content) throws IOException {
+    public static void outputFileFromUU(File outputDirectory, String bookName, String episodeTitle, String chapterTitle, String content) throws IOException {
         // write to file
         chapterTitle = chapterTitle.replaceAll("\\s+", "_");
         chapterTitle = chapterTitle.replaceAll("[/\"]", "_");
-        File dest = new File(String.format("%s%s%s", outputDirectory.getPath() + File.separator, episodeTitle + "-", chapterTitle + ".txt"));
+        File dest = new File(String.format("%s%s%s%s", outputDirectory.getPath() + File.separator, bookName + File.separator, episodeTitle + "-", chapterTitle + ".txt"));
         PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(dest, false), StandardCharsets.UTF_8));
         pw.println(chapterTitle);
         pw.println(content);
